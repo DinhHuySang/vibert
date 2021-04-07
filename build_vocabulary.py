@@ -1,7 +1,12 @@
+import sentencepiece as spm
+import random
 MODEL_PREFIX = "tokenizer" #@param {type: "string"}
-VOC_SIZE = 32000 #@param {type:"integer"}
+VOC_SIZE = 18000 #@param {type:"integer"}
 SUBSAMPLE_SIZE = 12800000 #@param {type:"integer"}
 NUM_PLACEHOLDERS = 256 #@param {type:"integer"}
+
+PRC_DATA_FPATH = "/media/leo/967C7A9E7C7A7937/linux/data_for_Language_Model/backup/k/try.txt"
+VOC_FNAME = "/media/leo/967C7A9E7C7A7937/linux/data_for_Language_Model/backup/vocab/vocab.txt" #@param {type:"string"}
 
 SPM_COMMAND = ('--input={} --model_prefix={} '
                '--vocab_size={} --input_sentence_size={} '
@@ -40,8 +45,7 @@ bert_vocab = ctrl_symbols + bert_vocab
 bert_vocab += ["[UNUSED_{}]".format(i) for i in range(VOC_SIZE - len(bert_vocab))]
 
 print(len(bert_vocab))
-VOC_FNAME = "vocab.txt" #@param {type:"string"}
 
-with open(VOC_FNAME, "w") as fo:
+with open(VOC_FNAME, "w+") as fo:
   for token in bert_vocab:
     fo.write(token+"\n")
