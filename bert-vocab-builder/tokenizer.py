@@ -50,7 +50,7 @@ import unicodedata
 import six
 from six.moves import range  # pylint: disable=redefined-builtin
 # from tensor2tensor.utils import mlperf_log
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 import time
 
 # Conversion between Unicode and UTF-8, if required (on Python2)
